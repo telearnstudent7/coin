@@ -71,10 +71,10 @@ class Coin(pygame.sprite.Sprite):
         # Determine bill type (20% chance for 2000 NTD)
         if random.random() < 0.2:
             self.image = BILL_IMG_2000
-            self.score_value = 20
+            self.score_value = 2000
         else:
             self.image = BILL_IMG_1000
-            self.score_value = 10
+            self.score_value = 1000
             
         # Get the rect and set initial random position
         self.rect = self.image.get_rect()

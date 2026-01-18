@@ -1,0 +1,36 @@
+# Ignore Python files
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore node_modules if you add any npm packages later
+node_modules/
+
+# Ignore logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Keep these files for the web version
+!index.html
+!style.css
+!script.js
+!*.png
+!*.jpg
+!*.jpeg
+!*.gif
+!README.md

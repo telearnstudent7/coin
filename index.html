@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="太空捕手 - 一個有趣的接錢遊戲，快來挑戰你的反應速度！">
+    <title>太空捕手 | Space Catcher</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <h1 class="game-title">
+                <span class="title-icon">💰</span>
+                太空捕手
+                <span class="title-icon">🚀</span>
+            </h1>
+            <p class="game-subtitle">Space Catcher - 接住從天而降的鈔票！</p>
+        </header>
+
+        <div class="game-wrapper">
+            <div class="game-container">
+                <canvas id="gameCanvas" width="800" height="600"></canvas>
+                
+                <div id="gameOverlay" class="game-overlay hidden">
+                    <div class="overlay-content">
+                        <h2 class="overlay-title">遊戲暫停</h2>
+                        <p class="overlay-text">按下「開始遊戲」按鈕繼續</p>
+                    </div>
+                </div>
+
+                <div id="gameOverScreen" class="game-over-screen hidden">
+                    <div class="game-over-content">
+                        <h2 class="game-over-title">遊戲結束！</h2>
+                        <p class="final-score">最終分數: <span id="finalScore">0</span></p>
+                        <button id="restartBtn" class="btn btn-primary">重新開始</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-info">
+                <div class="info-panel">
+                    <div class="score-display">
+                        <div class="score-label">分數</div>
+                        <div id="scoreValue" class="score-value">0</div>
+                    </div>
+                </div>
+
+                <div class="controls-panel">
+                    <h3 class="panel-title">遊戲控制</h3>
+                    <div class="control-buttons">
+                        <button id="startBtn" class="btn btn-success">開始遊戲</button>
+                        <button id="pauseBtn" class="btn btn-warning" disabled>暫停</button>
+                    </div>
+                    
+                    <div class="instructions">
+                        <h4>操作說明</h4>
+                        <ul>
+                            <li><kbd>←</kbd> <kbd>→</kbd> 左右移動</li>
+                            <li>💵 接住 1000 元 = +1000 分</li>
+                            <li>💴 接住 2000 元 = +2000 分</li>
+                            <li>⚠️ 錯過鈔票 = -5 分</li>
+                            <li>🎉 達到 100 分觸發鈔票雨！</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="game-footer">
+            <p>使用鍵盤方向鍵控制 | Made with ❤️</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
