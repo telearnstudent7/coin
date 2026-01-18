@@ -1,6 +1,6 @@
 # 太空捕手 🚀💰
 
-一個有趣的接錢遊戲，使用 HTML5 Canvas 開發！
+這是一個有趣的接錢遊戲，使用 HTML5 Canvas 開發！
 
 ![Game Screenshot](https://img.shields.io/badge/status-active-success.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
