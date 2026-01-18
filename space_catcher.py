@@ -23,6 +23,21 @@ BILL_WIDTH = 100
 BILL_HEIGHT = 50
 COIN_SPEED = 4
 
+# Load Images
+try:
+    _img_1000 = pygame.image.load("1000_ntd.png")
+    BILL_IMG_1000 = pygame.transform.scale(_img_1000, (BILL_WIDTH, BILL_HEIGHT))
+except:
+    BILL_IMG_1000 = pygame.Surface((BILL_WIDTH, BILL_HEIGHT))
+    BILL_IMG_1000.fill((0, 255, 0))
+
+try:
+    _img_2000 = pygame.image.load("2000_ntd.png")
+    BILL_IMG_2000 = pygame.transform.scale(_img_2000, (BILL_WIDTH, BILL_HEIGHT))
+except:
+    BILL_IMG_2000 = pygame.Surface((BILL_WIDTH, BILL_HEIGHT))
+    BILL_IMG_2000.fill((200, 200, 255)) # Light purple for 2000 fallback
+
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -52,14 +67,14 @@ class Player(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        # Load and scale the 1000 NTD bill imagex   
-        try:
-            image = pygame.image.load("1000_ntd.png").convert_alpha()
-            self.image = pygame.transform.scale(image, (BILL_WIDTH, BILL_HEIGHT))
-        except FileNotFoundError:
-            # Fallback if image not found: Draw a green rectangle
-            self.image = pygame.Surface((BILL_WIDTH, BILL_HEIGHT))
-            self.image.fill((0, 255, 0))  # Green for money
+        
+        # Determine bill type (20% chance for 2000 NTD)
+        if random.random() < 0.2:
+            self.image = BILL_IMG_2000
+            self.score_value = 20
+        else:
+            self.image = BILL_IMG_1000
+            self.score_value = 10
             
         # Get the rect and set initial random position
         self.rect = self.image.get_rect()
@@ -82,6 +97,7 @@ def main():
 
     # Score settings
     score = 0
+    bonus_rain_triggered = False
     font = pygame.font.Font(None, 36)
 
     # Clock
@@ -100,6 +116,18 @@ def main():
             all_sprites.add(coin)
             coins.add(coin)
 
+        # Bonus Money Rain: Drop 1000 bills when score reaches 100
+        if score >= 100 and not bonus_rain_triggered:
+            for _ in range(1000):
+                coin = Coin()
+                # Spread them out vertically above the screen so they rain down
+                coin.rect.y = random.randint(-10000, -50)
+                # Randomize x again to be sure (already done in init but consistent style)
+                coin.rect.x = random.randint(0, WINDOW_WIDTH - BILL_WIDTH)
+                all_sprites.add(coin)
+                coins.add(coin)
+            bonus_rain_triggered = True
+
         # Update all sprites
         all_sprites.update()
 
@@ -114,7 +142,7 @@ def main():
         # True means remove the coin sprite from all groups
         hits = pygame.sprite.spritecollide(player, coins, True)
         for hit in hits:
-            score += 10
+            score += hit.score_value
         
         # Drawing
         screen.fill(BLACK)
@@ -133,3 +161,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
