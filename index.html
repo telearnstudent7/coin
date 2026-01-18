@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,11 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <header class="game-header">
@@ -24,7 +28,7 @@
         <div class="game-wrapper">
             <div class="game-container">
                 <canvas id="gameCanvas" width="800" height="600"></canvas>
-                
+
                 <div id="gameOverlay" class="game-overlay hidden">
                     <div class="overlay-content">
                         <h2 class="overlay-title">遊戲暫停</h2>
@@ -55,15 +59,15 @@
                         <button id="startBtn" class="btn btn-success">開始遊戲</button>
                         <button id="pauseBtn" class="btn btn-warning" disabled>暫停</button>
                     </div>
-                    
+
                     <div class="instructions">
                         <h4>操作說明</h4>
                         <ul>
                             <li><kbd>←</kbd> <kbd>→</kbd> 左右移動</li>
-                            <li>💵 接住 1000 元 = +1000 分</li>
-                            <li>💴 接住 2000 元 = +2000 分</li>
+                            <li>💵 接住 1000 元 = +10000 分</li>
+                            <li>💴 接住 2000 元 = +20000 分</li>
                             <li>⚠️ 錯過鈔票 = -5 分</li>
-                            <li>🎉 達到 100 分觸發鈔票雨！</li>
+                            <li>🎉 達到 100 分觸發鈔票雨！(100,000個)</li>
                         </ul>
                     </div>
                 </div>
@@ -77,4 +81,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

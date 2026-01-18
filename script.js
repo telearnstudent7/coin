@@ -11,7 +11,7 @@ const CONFIG = {
     COIN_SPEED: 4,
     SPAWN_RATE: 60, // 1 in 60 chance per frame
     BONUS_THRESHOLD: 100, // Score to trigger bonus rain
-    BONUS_COINS: 1000,
+    BONUS_COINS: 100000,
     MISS_PENALTY: 5,
     FPS: 60
 };
@@ -210,7 +210,7 @@ class Coin {
             this.is2000 = type === 2000;
         }
 
-        this.value = this.is2000 ? 2000 : 1000;
+        this.value = this.is2000 ? 20000 : 10000;
         this.image = this.is2000 ? images.bill2000 : images.bill1000;
 
         this.x = Math.random() * (CONFIG.WINDOW_WIDTH - this.width);
